@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCIENSEA 2K25</title>
+    <link rel="icon" href="eeegolden.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            background-color: #121212;
+            color: #fff;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: #FF8C00;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        h3 {
+            color: #FFD700;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 50px;
+            background-color: rgba(18, 18, 18, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            transition: transform 0.3s ease;
+        }
+        
+        nav.hide {
+            transform: translateY(-100%);
+        }
+        
+        .logo {
+            height: 50px;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: #FFD700;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: #FF8C00;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #FF8C00;
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .nav-register-btn {
+            background-color: #FF8C00;
+            color: #121212;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            margin-left: 20px;
+        }
+        
+        .nav-register-btn:hover {
+            background-color: #FFD700;
+        }
+        
+        /* Home Section */
+        #home {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            padding: 0;
+        }
+        
+        .home-content {
+            max-width: 800px;
+        }
+        
+        .home-content h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: #FFD700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .home-content p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            color: #FFF;
+        }
+        
+        .timer {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 30px 0;
+            display: inline-block;
+        }
+        
+        .timer div {
+            display: inline-block;
+            margin: 0 10px;
+        }
+        
+        .timer p {
+            font-size: 2.5rem;
+            margin: 0;
+            color: #FF8C00;
+            font-weight: bold;
+        }
+        
+        .timer span {
+            display: block;
+            font-size: 1rem;
+            color: #FFD700;
+        }
+        
+        .event-date {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            color: #FFD700;
+        }
+        
+        /* Combo Packs Section */
+        #combo-packs {
+            background-color: #1E1E1E;
+        }
+        .combo-pac{
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .combo-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .combo-box {
+            background: linear-gradient(145deg, #121212, #2a2a2a);
+            border-radius: 10px;
+            padding: 30px;
+            width: 250px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s;
+        }
+        
+        .combo-box:hover {
+            transform: translateY(-10px);
+        }
+        
+        .combo-box h3 {
+            color: #FF8C00;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        
+        .combo-price {
+            font-size: 2rem;
+            color: #FFD700;
+            margin-bottom: 20px;
+        }
+        
+        .combo-features {
+            list-style: none;
+            margin-bottom: 25px;
+            text-align: left;
+        }
+        
+        .combo-features li {
+            padding: 8px 0;
+            border-bottom: 1px solid #333;
+            color: #CCC;
+        }
+        
+        .combo-features li:last-child {
+            border-bottom: none;
+        }
+        
+        .combo-features li::before {
+            content: "✓";
+            color: #FF8C00;
+            margin-right: 10px;
+        }
+        
+        .combo-register-btn {
+            background-color: #FF8C00;
+            color: #121212;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+        
+        .combo-register-btn:hover {
+            background-color: #FFD700;
+        }
+        
+        /* Events Section */
+        .event-category {
+            margin-bottom: 60px;
+        }
+        .event-h3h{
+            text-align: center;
+        }
+        .event-boxes {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .event-box {
+            width: 250px;
+            height: 300px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        
+        .event-box:hover {
+            transform: translateY(-5px);
+        }
+        
+        .event-box-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+        }
+        
+        .event-box-front {
+            background-color: #1E1E1E;
+            color: #FFD700;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            border-radius: 10px;
+            height: 100%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .event-box-front img {
+            width: 100%;
+            height: 70%;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        
+        /* Event Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .event-modal {
+            background: linear-gradient(145deg, #1E1E1E, #2a2a2a);
+            width: 85%;
+            max-width: 500px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transform: scale(0.9);
+            opacity: 0;
+            transition: transform 0.4s ease, opacity 0.4s ease;
+            position: relative;
+        }
+        
+        .modal-overlay.active .event-modal {
+            transform: scale(1);
+            opacity: 1;
+        }
+        
+        .modal-header {
+            padding: 20px;
+            background-color: #FF8C00;
+            color: #121212;
+            position: relative;
+        }
+        
+        .modal-header h3 {
+            color: #121212;
+            margin: 0;
+            font-size: 1.6rem;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.8rem;
+            color: #121212;
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        
+        .close-modal:hover {
+            color: #FFF;
+        }
+        
+        .modal-content {
+            padding: 20px;
+        }
+        
+        .modal-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        
+        .modal-description {
+            margin-bottom: 15px;
+            line-height: 1.6;
+            color: #CCC;
+            font-size: 0.95rem;
+        }
+        
+        .modal-details {
+            background-color: rgba(255, 140, 0, 0.1);
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        
+        .modal-details h4 {
+            color: #FFD700;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+        
+        .modal-details ul {
+            list-style-type: none;
+            padding-left: 20px;
+        }
+        
+        .modal-details li {
+            margin-bottom: 6px;
+            color: #CCC;
+            position: relative;
+            font-size: 0.9rem;
+        }
+        
+        .modal-details li::before {
+            content: "•";
+            color: #FF8C00;
+            font-size: 1.3rem;
+            position: absolute;
+            left: -20px;
+            top: -5px;
+        }
+        
+        .modal-register-btn {
+            background-color: #FF8C00;
+            color: #121212;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            display: block;
+            margin: 0 auto;
+            font-size: 0.9rem;
+        }
+        
+        .modal-register-btn:hover {
+            background-color: #FFD700;
+        }
+        
+        /* Schedule Section */
+        #schedule {
+            background-color: #1E1E1E;
+        }
+        
+        .schedule-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .schedule-item {
+            background-color: #121212;
+            border-left: 5px solid #FF8C00;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .schedule-time {
+            color: #FFD700;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .schedule-title {
+            color: #FFF;
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+        
+        .schedule-desc {
+            color: #CCC;
+        }
+        
+        /* Rules Section */
+        .rules-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .rules-list {
+            list-style-type: none;
+        }
+        
+        .rules-list li {
+            background-color: #1E1E1E;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            position: relative;
+            padding-left: 50px;
+        }
+        
+        .rules-list li:before {
+            content: "•";
+            color: #FF8C00;
+            font-size: 2rem;
+            position: absolute;
+            left: 20px;
+            top: 5px;
+        }
+        
+        /* Gallery Section */
+        #gallery {
+            background-color: #1E1E1E;
+        }
+        
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .gallery-item {
+            height: 200px;
+            overflow: hidden;
+            border-radius: 8px;
+            position: relative;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        /* Contact Section */
+        .contact-coordinators {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .coordinator h4 {
+            color: #FFD700;
+            margin-bottom: 5px;
+        }
+        
+        .coordinator p {
+            color: #CCC;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+        
+        .email-box, .social-box {
+            background-color: #1E1E1E;
+            padding: 30px;
+            border-radius: 8px;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+        
+        .email-box h3, .social-box h3 {
+            margin-bottom: 20px;
+        }
+        
+        .email-box a {
+            color: #FF8C00;
+            font-size: 1.2rem;
+            text-decoration: none;
+        }
+        
+        .email-box:hover{
+            transform: translateY(-5px);
+            box-shadow: 0 10px 10px rgba(221, 146, 33, 0.859);
+        }
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        .social-icons a {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background-color: #121212;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #FFD700;
+            font-size: 1.5rem;
+            transition: all 0.3s;
+        }
+        
+        .social-icons a:hover {
+            background-color: #FF8C00;
+            color: #121212;
+            transform: translateY(-5px);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #121212;
+            padding: 30px 0;
+            text-align: center;
+            border-top: 1px solid #FF8C00;
+        }
+        
+        footer p {
+            color: #FFD700;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .home-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .event-boxes, .combo-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .contact-coordinators {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .event-modal {
+                width: 95%;
+                max-height: 90vh;
+                overflow-y: auto;
+            }
+            
+            .modal-image {
+                height: 180px;
+            }
+            
+            .modal-header h3 {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav id="navbar">
+        <img src="eeegolden.png" alt="Event Logo" class="logo">
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#events">Events</a></li>
+            <li><a href="#schedule">Schedule</a></li>
+            <li><a href="#register">Register</a></li>
+            <li><a href="#rules">Rules</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home">
+        <div class="home-content">
+            <h1>SCIENSEA 2K25</h1>
+            <p>Where Technology Meets Creativity</p>
+            <div class="timer">
+                <div>
+                    <p id="days">00</p>
+                    <span>Days</span>
+                </div>
+                <div>
+                    <p id="hours">00</p>
+                    <span>Hours</span>
+                </div>
+                <div>
+                    <p id="minutes">00</p>
+                    <span>Minutes</span>
+                </div>
+                <div>
+                    <p id="seconds">00</p>
+                    <span>Seconds</span>
+                </div>
+            </div>
+            <p class="event-date">September 26, 2025 | Kongu Engineering College</p>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section id="events">
+        <div class="container">
+            <h2>Events</h2>
+            <div class="event-category">
+                <div class="event-h3h">
+                    <h3>Workshop</h3>
+                </div>
+                <div class="event-boxes">
+                    <div class="event-box" data-event="workshop">
+                        <div class="event-box-inner">
+                            <div class="event-box-front">
+                                <img src="workshop.jpg" alt="Building Automation Workshop">
+                                <h4>Workshop on Building Automation</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="event-category">
+                <div class="event-h3h">
+                    <h3>Technical Events</h3>
+                </div>
+                <div class="event-boxes">
+                    <div class="event-box" data-event="paper-fiesta">
+                        <div class="event-box-inner">
+                            <div class="event-box-front">
+                                <img src="paperfeista.jpg" alt="Paper Fiesta">
+                                <h4>Paper Fiesta</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="event-box" data-event="project-parade">
+                        <div class="event-box-inner">
+                            <div class="event-box-front">
+                                <img src="projectparade.jpg" alt="Project Parade">
+                                <h4>Project Parade</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="event-box" data-event="think-simulate">
+                        <div class="event-box-inner">
+                            <div class="event-box-front">
+                                <img src="thinkandsimulate.jpg" alt="Think & Simulate">
+                                <h4>Think &amp; Simulate</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="event-box" data-event="chain-quest">
+                        <div class="event-box-inner">
+                            <div class="event-box-front">
+                                <img src="chainquest.jpg" alt="Chain Quest">
+                                <h4>Chain Quest</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="event-category">
+                <div class="event-h3h"><h3>Non-Technical Events</h3></div>
+                <div class="event-boxes">
+                    <div class="event-box" data-event="upside-down">
+                        <div class="event-box-inner">
+                            <div class="event-box-front">
+                                <img src="upsidedown.jpg" alt="Upside Down">
+                                <h4>Upside Down</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="event-box" data-event="lyric-decode">
+                        <div class="event-box-inner">
+                            <div class="event-box-front">
+                                <img src="lyricsdecoder.jpg" alt="Lyric Decode">
+                                <h4>Lyric Decode</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="event-box" data-event="cinebuzz">
+                        <div class="event-box-inner">
+                            <div class="event-box-front">
+                                <img src="cinebuzz.jpg" alt="Cinebuzz">
+                                <h4>Cinebuzz</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Event Modal -->
+    <div class="modal-overlay" id="event-modal">
+        <div class="event-modal">
+            <div class="modal-header">
+                <h3 id="modal-title">Event Title</h3>
+                <button class="close-modal" type="button">&times;</button>
+            </div>
+            <div class="modal-content">
+                <img id="modal-image" src="" alt="Event Image" class="modal-image">
+                <p id="modal-description" class="modal-description">Event description will appear here.</p>
+                <div class="modal-details">
+                    <h4>Event Details</h4>
+                    <ul id="modal-details-list">
+                        <!-- Details will be added dynamically -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Schedule Section -->
+    <section id="schedule">
+        <div class="container">
+            <h2>Event Schedule</h2>
+            <div class="schedule-container">
+                <div class="schedule-item">
+                    <div class="schedule-time">9:00 AM - 09:30 AM</div>
+                    <div class="schedule-title">Inauguration Ceremony</div>
+                    <div class="schedule-desc">The function will commence with the lighting of the lamp.</div>
+                </div>
+                <div class="schedule-item">
+                    <div class="schedule-time">10:00 AM - 12:30 PM</div>
+                    <div class="schedule-title">Workshop</div>
+                    <div class="schedule-desc">Workshop on Building Automation</div>
+                </div>
+                <div class="schedule-item">
+                    <div class="schedule-time">10:00 AM - 11:30 AM</div>
+                    <div class="schedule-title">Paper Fiesta and Project Parade</div>
+                    <div class="schedule-desc">Paper Fiesta and Project Parade will be conducted simultaneously in different slots.</div>
+                </div>
+                <div class="schedule-item">
+                    <div class="schedule-time">11:30 AM - 12:30 PM</div>
+                    <div class="schedule-title">Chain Quest and Think &amp; Simulate</div>
+                    <div class="schedule-desc">Chain Quest and Think &amp; Simulate will be conducted simultaneously in different slots.</div>
+                </div>
+                <div class="schedule-item">
+                    <div class="schedule-time">12:30 PM - 01:30 PM</div>
+                    <div class="schedule-title">Lunch Break</div>
+                    <div class="schedule-desc">Food will be arranged in the hostel.</div>
+                </div>
+                <div class="schedule-item">
+                    <div class="schedule-time">02:00 PM - 03:30 PM</div>
+                    <div class="schedule-title">Non-Technical Events</div>
+                    <div class="schedule-desc">Lyric Decode, Upside Down, Cinebuzz will be conducted simultaneously in different slots.</div>
+                </div>
+                <div class="schedule-item">
+                    <div class="schedule-time">03:30 PM - 4:10 PM</div>
+                    <div class="schedule-title">Valedictory</div>
+                    <div class="schedule-desc">Prizes and Certificates will be given</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Combo Packs Section -->
+    <section id="register">
+        <div class="container">
+            <h2>Combo Packages </h2>
+            <div class="combo-pac">
+                <p >Register for multiple events and save money with our combo packages</p>
+            </div>
+            <div class="combo-container">
+                <div class="combo-box">
+                    <h3>Workshop Pack</h3>
+                    <div class="combo-price">₹250</div>
+                    <ul class="combo-features">
+                        <li>₹250 Per Head</li>
+                        <li>1 Workshop</li>
+                        <li>1 Non-Technical Event</li>
+                        <li>Event Kit</li>
+                        <li>Lunch Included</li>
+                        <li>Refreshment Included</li>
+                    </ul>
+                    <button class="combo-register-btn" type="button" onclick="window.open('https://forms.gle/iajCnWjcrziVCJLJ6', '_blank')">Register</button>
+                </div>
+                <div class="combo-box">
+                    <h3>Paper + Project Pack</h3>
+                    <div class="combo-price">₹250</div>
+                    <ul class="combo-features">
+                        <li>₹250 Per Head</li>
+                        <li>2 Technical Events </li>
+                        <li>Paper + Project</li>
+                        <li>1 Non-Technical Event</li>
+                        <li>Event Kit</li>
+                        <li>Lunch Included</li>
+                        <li>Refreshment Included</li>
+                    </ul>
+                    <button class="combo-register-btn" type="button" onclick="window.open('https://forms.gle/XVHwFoebdgnFVm5N6', '_blank')">Register</button>
+                </div>
+                <div class="combo-box">
+                    <h3>Paper + 1 Tech Pack</h3>
+                    <div class="combo-price">₹250</div>
+                    <ul class="combo-features">
+                        <li>₹250 Per Head</li>
+                        <li>2 Technical Events </li>
+                        <li>Paper + Chain Quest or Think &amp; Simulate</li>
+                        <li>1 Non-Technical Event</li>
+                        <li>Event Kit</li>
+                        <li>Lunch Included</li>
+                        <li>Refreshment Included</li>
+                    </ul>
+                    <button class="combo-register-btn" type="button" onclick="window.open('https://forms.gle/ZKXYwyz9BKRPddyM6', '_blank')">Register</button>
+                </div>
+                <div class="combo-box">
+                    <h3>Project + 1 Tech Pack</h3>
+                    <div class="combo-price">₹250</div>
+                    <ul class="combo-features">
+                        <li>₹250 Per Head</li>
+                        <li>2 Technical Events</li>
+                        <li>Project + Chain Quest or Think &amp; Simulate</li>
+                        <li>1 Non-Technical Event</li>
+                        <li>Event Kit</li>
+                        <li>Lunch Included</li>
+                        <li>Refreshment Included</li>
+                    </ul>
+                    <button class="combo-register-btn" type="button" onclick="window.open('https://forms.gle/V7E54AY6MDUTu7XM8', '_blank')">Register</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rules Section -->
+    <section id="rules">
+        <div class="container">
+            <h2>Rules &amp; Guidelines</h2>
+            <div class="rules-container">
+                <ul class="rules-list">
+                    <li>All participants must carry their college ID cards and event registration confirmation.</li>
+                    <li>Participants should report at the venue 30 minutes prior to the event start time.</li>
+                    <li>The decision of the judges and event organizers will be final and binding.</li>
+                    <li>Damage to any equipment or property will result in disqualification and penalty.</li>
+                    <li>All participants are expected to maintain decorum and sportsmanship throughout the event.</li>
+                    </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <!--<section id="gallery">
+        <div class="container">
+            <h2>Gallery</h2>
+            <p style="text-align: center; margin-bottom: 30px;">Memories from Last Year's Event</p>
+            <div class="gallery-container">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Event Photo">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Event Photo">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Event Photo">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Event Photo">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Event Photo">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Event Photo">
+                </div>
+            </div>
+        </div>
+    </section>-->
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <div class="contact-info">
+                <div class="email-box">
+                    <h3>Mr. A. Faridul Arshad</h3>
+                    <p>Overall Event Coordinator</p>
+                    <p>+91 7904526387</p>
+                </div>
+                <div class="email-box">
+                    <h3>Mr. S. Vikash Pranesh</h3>
+                    <p>Overall Event Coordinator</p>
+                    <p>+91 6379588311</p>
+                </div>
+                <div class="email-box">
+                    <h3>Email Us</h3>
+                    <a href="mailto:sciensea2k25official@gmail.com">sciensea2k25official@gmail.com</a>
+                </div>
+                <div class="email-box">
+                    <h3>Follow Us</h3>
+                    <div class="social-icons">
+                        <a href="https://www.instagram.com/kec.eee?igsh=MWxsOWxndHA4ajd1dA=="  target="_blank"><i class="fab fa-instagram"></i><span class="sr-only">Follow us on Instagram</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 SCIENSEA 2K25. All Rights Reserved.</p>
+            <p class="developer">Designed and developed by @sowndhar_luna</p>
+        </div>
+    </footer>
+
+    <script>
+        // Event data - you can customize this for each event
+        const eventData = {
+            'workshop': {
+                title: 'Workshop on Building Automation',
+                image: 'workshop.jpg',
+                description: 'Step into the world of smart living with our Building Automation Workshop. Discover how technology transforms spaces into intelligent environments.',
+                details: [
+                    'Duration: 2.5 hours',
+                    'Takeaways: Certificate of participation and workshop materials',
+                    'Materials: All equipment will be provided'
+                ]
+            },
+            'paper-fiesta': {
+                title: 'Paper Fiesta',
+                image: 'paperfeista.jpg',
+                description: 'Present your research papers and innovative ideas to a panel of experts.',
+                details: [
+                    'Team size: Maximum of 3 members',
+                    'Presentation time: 5 minutes + 2 minutes Q&A',
+                    'Submission: Abstract to be submitted beforehand',
+                    'Evaluation: Based on novelty, content, and presentation'
+                ]
+            },
+            'project-parade': {
+                title: 'Project Parade',
+                image: 'projectparade.jpg',
+                description: 'Exhibit your innovative projects and prototypes to a wider audience.',
+                details: [
+                    'Team size: Maximum of 3 members',
+                    'Prototype: Must bring the working model of the project',
+                    'Submission: Abstract to be submitted beforehand',
+                    'Judging criteria: Innovation, implementation, and utility'
+                ]
+            },
+            'think-simulate': {
+                title: 'Think & Simulate',
+                image: 'thinkandsimulate.jpg',
+                description: 'Tinkercad-based simulation challenge, solve the given problems.',
+                details: [
+                    'Team size: Maximum of 2 members',
+                    'Duration: 1 hour to solve 2 questions',
+                    'System: Teams may use their own laptops, if available else System will be provided.',
+                    'Evaluation: Winners will be decided based on completion time.'
+                ]
+            },
+            'chain-quest': {
+                title: 'Chain Quest',
+                image: 'chainquest.jpg',
+                description: 'A series of interconnected technical challenges that test your logical reasoning and teamwork. Each solved challenge provides clues to the next, creating an exciting chain of puzzles to unravel.',
+                details: [
+                    'Team size: 2 members',
+                    'Duration: 1 hour',
+                    'Type: Quiz based EEE Domain',
+                    'Scoring: Based on completion time and accuracy',
+                    'Equipment: Only pen allowed'
+                ]
+            },
+            'upside-down': {
+                title: 'Upside Down',
+                image: 'upsidedown.jpg',
+                description: 'In Upside Down, a player says a word, and if the next person replies with something related, they are out.',
+                details: [
+                    'Team size: Maximum of 3 members',
+                    'Note: Be prepared for surprises!'
+                ]
+            },
+            'lyric-decode': {
+                title: 'Lyric Decode',
+                image: 'lyricsdecoder.jpg',
+                description: 'Test your knowledge of Tamil songs by decoding lyrics and identifying tracks.',
+                details: [
+                    'Team size: Maximum of 3 members',
+                    'Format: English translated Lyrics',
+                    'Judging: Based on speed and accuracy'
+                ]
+            },
+            'cinebuzz': {
+                title: 'Cinebuzz',
+                image: 'cinebuzz.jpg',
+                description: 'Guess the movie from the worst plot twist ever!',
+                details: [
+                    'Team size: 3 members',
+                    'Language: Tamil movies',
+                    'Scoring: Points for correct answers'
+                ]
+            }
+        };
+
+        // Modal functionality
+        const modalOverlay = document.getElementById('event-modal');
+        const modalTitle = document.getElementById('modal-title');
+        const modalImage = document.getElementById('modal-image');
+        const modalDescription = document.getElementById('modal-description');
+        const modalDetailsList = document.getElementById('modal-details-list');
+        const closeModalBtn = document.querySelector('.close-modal');
+        
+        // Add click event to all event boxes
+        document.querySelectorAll('.event-box').forEach(box => {
+            box.addEventListener('click', function() {
+                const eventId = this.getAttribute('data-event');
+                openModal(eventId);
+            });
+        });
+        
+        // Function to open modal with event details
+        function openModal(eventId) {
+            const event = eventData[eventId];
+            
+            if (event) {
+                modalTitle.textContent = event.title;
+                modalImage.src = event.image;
+                modalImage.alt = event.title;
+                modalDescription.textContent = event.description;
+                
+                // Clear previous details
+                modalDetailsList.innerHTML = '';
+                
+                // Add new details
+                event.details.forEach(detail => {
+                    const li = document.createElement('li');
+                    li.textContent = detail;
+                    modalDetailsList.appendChild(li);
+                });
+                
+                // Show modal
+                modalOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Prevent scrolling
+            }
+        }
+        
+        // Close modal
+        closeModalBtn.addEventListener('click', closeModal);
+        modalOverlay.addEventListener('click', function(e) {
+            if (e.target === modalOverlay) {
+                closeModal();
+            }
+        });
+        
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
+                closeModal();
+            }
+        });
+        
+        function closeModal() {
+            modalOverlay.classList.remove('active');
+            document.body.style.overflow = ''; // Re-enable scrolling
+        }
+        
+        // Timer for the event
+        function updateTimer() {
+            const eventDate = new Date('September 26, 2025 09:00:00').getTime();
+            const now = new Date().getTime();
+            const distance = eventDate - now;
+            
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            document.getElementById('days').innerText = days;
+            document.getElementById('hours').innerText = hours;
+            document.getElementById('minutes').innerText = minutes;
+            document.getElementById('seconds').innerText = seconds;
+        }
+        
+        setInterval(updateTimer, 1000);
+        updateTimer();
+        
+        // Sticky navbar hide/show on scroll
+        let lastScrollTop = 0;
+        const navbar = document.getElementById('navbar');
+        
+        window.addEventListener('scroll', function() {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > lastScrollTop && scrollTop > 200) {
+                navbar.classList.add('hide');
+            } else {
+                navbar.classList.remove('hide');
+            }
+            
+            lastScrollTop = scrollTop;
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Register button in modal
+        document.querySelector('.modal-register-btn').addEventListener('click', function() {
+            alert('Individual event registration will be available soon!');
+        });
+    </script>
+</body>
+</html>
